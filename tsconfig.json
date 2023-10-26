@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "lib": ["dom"],
+    "strict": true,
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "types": [
+      "cypress",
+      "node"
+    ]
+  },
+  "references": [
+    {
+      "path": "tsconfig.lib.json"
+    },
+    {
+      "path": "tsconfig.test.json"
+    },
+    {
+      "path": "tsconfig.scripts.json"
+    }
+  ]
+}

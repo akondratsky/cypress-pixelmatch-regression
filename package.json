@@ -1,0 +1,32 @@
+{
+  "name": "cypress-pixelmatch-regression",
+  "type": "commonjs",
+  "version": "0.0.1-43",
+  "homepage": "https://github.com/akondratsky/cypress-pixelmatch-regression",
+  "repository": "https://github.com/akondratsky/cypress-pixelmatch-regression",
+  "license": "MIT",
+  "keywords": [
+    "visual regression",
+    "image diff",
+    "cypress"
+  ],
+  "scripts": {
+    "build": "tsc --project tsconfig.lib.json && bun ./dist.ts",
+    "clean": "tsc --build --clean"
+  },
+  "devDependencies": {
+    "@types/pixelmatch": "5.2.5",
+    "@types/pngjs": "6.0.3",
+    "bun-types": "latest",
+    "cypress": "^13.3.2",
+    "typescript": "5.2.2"
+  },
+  "dependencies": {
+    "mkdirp": "3.0.1",
+    "pixelmatch": "5.3.0",
+    "pngjs": "7.0.0"
+  },
+  "peerDependencies": {
+    "cypress": ">=12.17.4"
+  }
+}
