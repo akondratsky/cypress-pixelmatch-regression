@@ -17,9 +17,9 @@ export const visualRegressionActualRun = async ({
   alwaysGenerateDiff,
 }: TaskRunParams) => {
   const actualImagePath = path.join(actualDir, specName, `${name}.png`);
-  const baseImagePath = path.join(baseDir, specName, `${name}.png`);
+  const baseImagePath = path.join(baseDir, specName, `${name}-base.png`);
   const diffSpecFolder = path.join(diffDir, specName);
-  const diffImagePath = path.join(diffSpecFolder, `${name}.png`);
+  const diffImagePath = path.join(diffSpecFolder, `${name}-diff.png`);
 
   const actualImage = await readPngFile(actualImagePath);
   const baseImage = await readPngFile(baseImagePath);

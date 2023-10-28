@@ -49,6 +49,7 @@ export default defineConfig({
 - `screenshotsFolder` is a directory where actual screenshots will be saved; `cypress-pixelmatch-regression` uses default `cy.screenshot()` command, and it saves them according to this parameter, it is required to run plugin
 - `baseDir` is required, it is a directory where so-called baseline screenshots are kept
 - `diffDir` is required, a directory with images containing rendered difference between actual and baseline screenshots
+- `alwaysGenerateDiff` is optional, if true, difference files will be generated even if no difference found
 
 ### Add Command
 

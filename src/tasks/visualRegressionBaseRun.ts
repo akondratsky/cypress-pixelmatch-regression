@@ -10,7 +10,7 @@ export const visualRegressionBaseRun = ({ name, specName, actualDir, baseDir }: 
 
   fs.copyFileSync(
     path.join(actualDir, specName, `${name}.png`),
-    path.join(specBaseDir, `${name}.png`),
+    path.join(specBaseDir, `${name}-base.png`),
   );
 
   return true;

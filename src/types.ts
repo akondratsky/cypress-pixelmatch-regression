@@ -1,21 +1,22 @@
-export type EnvConfig = {
+export type PixelmatchRegressionConfig = {
   baseDir: string;
   diffDir: string;
   alwaysGenerateDiff: boolean;
 }
 
+export type CompareSnapshotOptions = Cypress.ScreenshotOptions & {
+  errorThreshold: number;
+  pixelThreshold: number;
+};
+
 declare global {
   namespace Cypress {
-    type CompareSnapshotOptions = {
-      errorThreshold: number;
-      pixelThreshold: number;
-    };
-
     interface Chainable {
       compareSnapshot(
         name: string,
-        options?: Partial<Cypress.ScreenshotOptions & CompareSnapshotOptions>
+        options?: Partial<CompareSnapshotOptions>
       ): Chainable<JQuery<HTMLElement>>;
     }
   }
 }
+

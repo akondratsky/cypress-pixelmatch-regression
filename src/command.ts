@@ -1,12 +1,12 @@
 import path from 'path';
-import { EnvConfig } from './types';
+import { CompareSnapshotOptions, PixelmatchRegressionConfig } from './types';
 
 export const addCompareSnapshotsCommand = (
-  defaultOptions: Partial<Cypress.ScreenshotOptions & Cypress.CompareSnapshotOptions> = {},
+  defaultOptions: Partial<CompareSnapshotOptions> = {},
 ) => {
   const actualDir = Cypress.config().screenshotsFolder;
   const runType = Cypress.env('type') === 'base' ? 'base' : 'actual';
-  const { alwaysGenerateDiff, baseDir, diffDir } = Cypress.env('pixelmatchPlugin') as EnvConfig;
+  const { alwaysGenerateDiff, baseDir, diffDir } = Cypress.env('pixelmatchPlugin') as PixelmatchRegressionConfig;
 
   Cypress.Commands.add(
     'compareSnapshot',
@@ -23,7 +23,7 @@ export const addCompareSnapshotsCommand = (
 
       const subject = prevSubject ? cy.wrap(prevSubject, { log: false }) : cy;
       subject
-        .screenshot(path.join(Cypress.spec.name, name), screenshotOptions)
+        .screenshot(name, screenshotOptions)
         .task(
           runType === 'base' ? 'visualRegressionBaseRun' : 'visualRegressionActualRun',
           {
