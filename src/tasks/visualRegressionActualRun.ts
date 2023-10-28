@@ -10,9 +10,10 @@ export const visualRegressionActualRun = async ({
   baseDir,
   diffDir,
   actualDir,
-  errorThreshold = 0,
   name,
+  errorThreshold = 0,
   pixelThreshold = 0,
+  ignoreAntiAliasing = false,
   specName,
   alwaysGenerateDiff,
 }: TaskRunParams) => {
@@ -37,7 +38,10 @@ export const visualRegressionActualRun = async ({
     diffImage.data,
     width,
     height,
-    { threshold: pixelThreshold },
+    {
+      threshold: pixelThreshold,
+      includeAA: !ignoreAntiAliasing,
+    },
   );
 
   const percentage = mismatchedPixels / (width * height);

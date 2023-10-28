@@ -1,4 +1,3 @@
-import path from 'path';
 import { CompareSnapshotOptions, PixelmatchRegressionConfig } from './types';
 
 export const addCompareSnapshotsCommand = (
@@ -14,7 +13,7 @@ export const addCompareSnapshotsCommand = (
     (prevSubject, name, options = {}) => {
       cy.log(`compareSnapshot("${name}")`);
 
-      const { errorThreshold, pixelThreshold, ...defaultScreenshotOptions } = options;
+      const { errorThreshold, pixelThreshold, ignoreAntiAliasing, ...defaultScreenshotOptions } = options;
       const screenshotOptions: Partial<Cypress.ScreenshotOptions & Cypress.Loggable> = {
         ...defaultScreenshotOptions,
         overwrite: true,
@@ -32,8 +31,9 @@ export const addCompareSnapshotsCommand = (
             baseDir,
             diffDir,
             actualDir,
-            errorThreshold: errorThreshold || defaultOptions.errorThreshold,
-            pixelThreshold: pixelThreshold || defaultOptions.pixelThreshold,
+            errorThreshold: errorThreshold ?? defaultOptions.errorThreshold,
+            pixelThreshold: pixelThreshold ?? defaultOptions.pixelThreshold,
+            ignoreAntiAliasing: ignoreAntiAliasing ?? defaultOptions.ignoreAntiAliasing,
             alwaysGenerateDiff,
           },
           { log: false }

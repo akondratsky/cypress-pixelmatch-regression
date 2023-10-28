@@ -7,5 +7,6 @@ export type TaskRunParams = {
   keepDiff: boolean;
   errorThreshold: number;
   pixelThreshold: number;
+  ignoreAntiAliasing: boolean;
   alwaysGenerateDiff: boolean;
 };
