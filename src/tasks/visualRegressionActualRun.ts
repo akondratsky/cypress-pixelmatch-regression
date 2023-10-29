@@ -11,9 +11,8 @@ export const visualRegressionActualRun = async ({
   diffDir,
   actualDir,
   name,
-  errorThreshold = 0,
-  pixelThreshold = 0,
-  ignoreAntiAliasing = false,
+  errorThreshold,
+  pixelmatchOptions,
   specName,
   alwaysGenerateDiff,
 }: TaskRunParams) => {
@@ -38,10 +37,7 @@ export const visualRegressionActualRun = async ({
     diffImage.data,
     width,
     height,
-    {
-      threshold: pixelThreshold,
-      includeAA: !ignoreAntiAliasing,
-    },
+    pixelmatchOptions,
   );
 
   const percentage = mismatchedPixels / (width * height);
@@ -52,11 +48,5 @@ export const visualRegressionActualRun = async ({
     diffImage.pack().pipe(fs.createWriteStream(diffImagePath));
   }
 
-  if (isFailed) {
-    throw new Error(
-      `Threshold limit for the "${name}" image exceeded! \nExpected: ${errorThreshold} \nActual: ${percentage}`
-    );
-  }
-
-  return true;
+  return percentage;
 };

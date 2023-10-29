@@ -78,7 +78,11 @@ cy.get('#your-component').compareSnapshots('screenshot-name');
 // with options in command:
 cy.get('#your-component').compareSnapshots('screenshot-name', {
   errorThreshold: 0.1,
-  pixelThreshold: 0.2,
-  // ...options for cy.screenshot()
+  pixelmatch: {
+    // ...options for pixelmatch
+  },
+  screenshot: {
+    // ...options for cy.screenshot()
+  },
 });
 ```

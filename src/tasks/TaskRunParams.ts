@@ -1,3 +1,5 @@
+import type { PixelmatchOptions } from 'pixelmatch';
+
 export type TaskRunParams = {
   name: string;
   specName: string;
@@ -6,7 +8,6 @@ export type TaskRunParams = {
   diffDir: string;
   keepDiff: boolean;
   errorThreshold: number;
-  pixelThreshold: number;
-  ignoreAntiAliasing: boolean;
+  pixelmatchOptions: PixelmatchOptions;
   alwaysGenerateDiff: boolean;
 };

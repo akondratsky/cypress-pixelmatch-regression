@@ -1,21 +1,16 @@
+import type { PixelmatchOptions } from 'pixelmatch';
+
 export type PixelmatchRegressionConfig = {
   baseDir: string;
   diffDir: string;
   alwaysGenerateDiff: boolean;
 }
 
-export type CompareSnapshotOptions = Cypress.ScreenshotOptions & {
+export type CompareSnapshotOptions = {
   /** How many pixels may be different. The number in range from 0 to 1. */
-  errorThreshold: number;
-
-  /** Pixel-level sensitivity. The `threshold` from pixelmatch. The number in range from 0 to 1. */
-  pixelThreshold: number;
-
-  /**
-   * If true, pixelmatch checks if the difference is caused by anti-aliasing.
-   * See `includeAA` from pixelmatch
-   */
-  ignoreAntiAliasing: boolean;
+  errorThreshold?: number;
+  screenshot?: Partial<Cypress.ScreenshotOptions>;
+  pixelmatch?: Partial<PixelmatchOptions>;
 };
 
 declare global {
