@@ -1,5 +1,23 @@
 # cypress-pixelmatch-regression
 
+## Why is it archived and deprecated?
+
+This plugin was an experiment with design system testing. Such plugins as [cypress-visual-regression](https://github.com/cypress-visual-regression/cypress-visual-regression) or [cypress-visual-regression-resemble-js](https://github.com/Andremoniy/cypress-visual-regression-resemble-js) have predefined some pixel-level threshold by default, and you cannot change it. It means that, for example, if you want to test your background colors, there will be some tolerance for change. It's not what you need for design systems.
+
+Unfortunately, it is a well-known issue that browsers render the same web pages differently on different systems. If you work in a team, you will get different results. This fact was the reason why resemblejs and pixelmatch have anti-aliasing detection algorithms. The only way to get stable results during visual regression is to run tests on the same environment each time, as the part of CI/CD process.
+
+At this point it is clear that keeping screenshots in the same repo reduces transparency: if your test fails in the pipeline, there is no way to understand why. Even if your script commits the difference to the repo, you need to check it out. It increases complexity and makes the developer experience worse. In our team, we agreed that using external tools is the better way to achieve our goals.
+
+You might want to consider something from this list:
+
+- [Visual Regression Tracker](https://github.com/visual-regression-tracker/visual-regression-tracker)
+- [Applitools Eyes](https://applitools.com/platform/eyes/)
+- [Percy](https://percy.io/)
+- [Happo](https://happo.io/)
+
+
+## Description
+
 This plugin was inspired by [cypress-visual-regression](https://github.com/cypress-visual-regression/cypress-visual-regression) and [cypress-visual-regression-resemble-js](https://github.com/Andremoniy/cypress-visual-regression-resemble-js) plugins.
 
 The plugin uses [pixelmatch](https://github.com/mapbox/pixelmatch) to compare screenshots. Written in Typescript. Supports Typescript.
